@@ -1,0 +1,27 @@
+
+//Created By: Elias Naron
+//Created On: 8/31/2017
+ 
+ #include <iostream> //* This is important to the functionality of the stream....
+ using namespace std; //* important to not needing to type std.cout a million times.
+ 
+ int main()//* this is when the program starts this is the main function
+ {
+     int studentID = 0; //? set the value? based on student?
+     cout<<"Please enter a student ID number: "; //? shouldnt this be first? then the cin?
+     cin >> studentID; //* where user would enter value
+ 
+     cout<<"Hello World! "<<studentID<<endl; //? shouldnt this say the student's name based on input? THIS IS TEXT OUTPUT
+ }
+ 
+ Steps for algorithm
+ 1. Integer for student id
+ 2. ouputs "Please enter a student ID number: "
+ 3. allows student to enter their ID number
+ 4. prints text: hello world.
+ 5. prints text: studentID
+ 
+//Identify with a //* 2-3 items that seem important
+//Identify with a //? 2-3 items that seem incorrect, unclear or where you have questions
+//Identify the different parts of the program.
+//Create comments that show the algorithm of the program.
