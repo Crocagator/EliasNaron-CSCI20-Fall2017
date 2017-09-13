@@ -1,5 +1,3 @@
-#include <iostream>
-using namespace std;
 
 
 //Elias Naron
@@ -8,6 +6,9 @@ using namespace std;
 /* This is a lab where we have good practice putting certain variables exactly where you need them or it wont make sense.
 i guess the funny part is it wouldnt make sense anyways because its a madlib and it is in their nature to not make sense.
 */
+
+#include <iostream>
+using namespace std;
 
 int main() //This is where the program starts!
 
