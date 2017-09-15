@@ -1,5 +1,5 @@
 //// Created By: Elias Naron
-// Created On: 9/09/2017
+// Created On: 9/12/2017
 
 /* Explanation: So this is our first actual ASSIGNMENT!!! woo! For me it was extremely challenging
 as well as extremely rewarding.... This piece of code is a complete body health calculator 
@@ -56,7 +56,7 @@ Enjoy!
 
 // All cout means text that is output
 // All cin means text that a user inputs
-
+// 
     cout<<"Basal Metabolic Rate & Body Mass Index Calulator!"<<endl;
     cout<<"•••••••••••••••••••••••••••••••••••••••••••••••••"<<endl;
     
@@ -133,8 +133,9 @@ Enjoy!
     cout<<endl;
     
 //----------------BARE WITH THE MESSINESS, WHAT ELSE COULD BE DONE TO MAKE THE OUTPUT PRETTY?----------------------------------------
-    cout<<"Here is your card of health"<<endl;
-    cout<<"---------------------------"<<endl;
+//----------------------------------------I couldnt handle it not lining up...-------------------------------------------------------
+    cout<<"                                  Here is your card of health                                           "<<endl;
+    cout<<"--------------------------------------------------------------------------------------------------------"<<endl;
     cout<<"(please note that all stats are calculated based on a sedentary lifestyle, which means little to no exercise)"<<endl;
     cout<<endl;
     cout<<"Name:   "<<name_first<<" "<<name_last<<endl;
@@ -146,14 +147,14 @@ Enjoy!
     cout<<endl;
     cout<<"---Mifflin & St Jeor BMR--------------------Harris & Benedict BMR----------------Body Mass Index---"<<endl;
     cout<<"F:         - "<<BMR_FEML_MFLN<<"                           Female - "<<BMR_FEML_HARRIS<<"                       "<<BMI<<endl;
-    cout<<"M:         - "<<BMR_MALE_MFLN<<"                           Male   - "<<BMR_MALE_HARRIS<<"                      "<<BMI<<endl;
+    cout<<"M:         - "<<BMR_MALE_MFLN<<"                           Male   - "<<BMR_MALE_HARRIS<<"                       "<<BMI<<endl;
     cout<<endl;
     cout<<"In order to maintain your (Mifflin & St Jeor) BMR you would need to consume this many of each food daily!! "<<endl;
     cout<<endl;
     cout<<endl;
     cout<<"---Boiled Eggs-----------Avacados--------------------Snickers -------------------Big Macs'------------"<<endl;
     cout<<endl;
-    cout<<"F:     "<<beggsF<<"                   "<<avacadosF<<"                          "<<snickersF<<"                             "<<macF<<endl;
+    cout<<"F:     "<<beggsF<<"                   "<<avacadosF<<"                          "<<snickersF<<"                              "<<macF<<endl;
     cout<<"M:     "<<beggsM<<"                   "<<avacadosM<<"                          "<<snickersM<<"                             "<<macF<<endl;
     cout<<"▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲"<<endl;
     
