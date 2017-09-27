@@ -1,6 +1,9 @@
 //Elias Naron
-//9/21/2017
-//guessing game
+//9/26/2017
+/*
+This is a way to show that we can call functions from place to place
+the method we are doing this is a fun guessing game with set parameters!
+*/
 
 
 #include <iostream>
