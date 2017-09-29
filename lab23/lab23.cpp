@@ -35,7 +35,7 @@ void NumberGenerator(int& maxnum ,int& minnum)
     srand(time(0));
     int difference = (maxnum - minnum) + 1 ;
     int GeneratedNumber = rand() % difference + minnum;
-    cout<<GeneratedNumber<<endl;
+     cout<<GeneratedNumber<<endl;
     
     
 }
