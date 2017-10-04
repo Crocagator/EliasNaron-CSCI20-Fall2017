@@ -76,6 +76,7 @@ int main () {
     Book_ book_2;
     Book_ book_3;
     Book_ book_4;
+    Book_ book_5;
     string user_information;
     
     //User input starts here !
@@ -85,6 +86,7 @@ int main () {
 
     // getline(cin,user_information)
     cout<<"Please Enter: Book Title 1"<<endl;
+    getline(cin, user_information);
     book_1.settitle_(user_information);
     
     cout<<"You set the title as : "<<user_information<<endl;
@@ -113,10 +115,15 @@ int main () {
     
     book_1.coutstuff();
     
+    cout<<endl;
+    
+    cin >> user_information;
+    
     
 //==============================================================================
     
     cout<<"Please Enter: Book Title 2"<<endl;
+    getline(cin, user_information);
     book_2.settitle_(user_information);
     
     cout<<"You set the title as : "<<user_information<<endl;
@@ -145,11 +152,17 @@ int main () {
     
     book_2.coutstuff();
     
+    cout<<endl;
+    
+    cin >> user_information;
+    
+    
     
       
 //=============================================================================
     
     cout<<"Please Enter: Book Title 3"<<endl;
+    getline(cin, user_information);
     book_3.settitle_(user_information);
     
     cout<<"You set the title as : "<<user_information<<endl;
@@ -178,10 +191,16 @@ int main () {
     
     book_3.coutstuff();
     
+    cout<<endl;
+    
+    cin >> user_information;
+    
+    
     
 //==============================================================================  
     
     cout<<"Please Enter: Book Title 4"<<endl;
+    getline(cin, user_information);
     book_4.settitle_(user_information);
     
     cout<<"You set the title as : "<<user_information<<endl;
@@ -209,8 +228,45 @@ int main () {
     cout<<"You set the copy right year to : "<<user_information<<endl;
     
     book_4.coutstuff();
-   
     
+    cout<<endl;
+    
+    cin >> user_information;
+    
+   
+//============================================================================cout<<"Please Enter: Book Title 4"<<endl;
+    
+    cout<<"Please Enter: Book Title 5"<<endl;
+    getline(cin, user_information);
+    book_5.settitle_(user_information);
+    
+    cout<<"You set the title as : "<<user_information<<endl;
+    
+    cout<<endl;
+    
+    cout<<"Please Enter: Book Author 5"<<endl;
+    
+    getline(cin, user_information);
+    book_5.setauthor_(user_information);
+    
+    cout<<endl;
+    
+    cout<<"You set the Author as : "<<user_information<<endl;
+    
+    cout<<endl;
+    
+    cout<<"Please Enter: Book 5 CopyRight Year"<<endl;
+    
+    getline(cin,user_information);
+    book_5.setcopyyr_(user_information);
+    
+    cout<<endl;
+    
+    cout<<"You set the copy right year to : "<<user_information<<endl;
+    
+    book_5.coutstuff();
+   
+        
    
     
    
