@@ -1,17 +1,23 @@
 //Elias Naron
 //10/24/2017
 
+/*
+THis program was interesting because we have to apply what we learned about classes ...
+this is easier said than done. Anyways, this program takes kelvin then converts it into the other heat measurements IE celsius and Fahrenheit, then outputs the information.
+What is cool is April gave us the main so we really just had to figure out the class and functions.
+*/
 
-#include <iostream> 
 
-using namespace std; 
+#include <iostream> // only need one include! 
 
-class TemperatureConverter {
+using namespace std; //standard!
+
+class TemperatureConverter { // This is my class
     
     
       
     
-    public:
+    public: // this is where i have my public portion of the class
     
     TemperatureConverter (); //constructor
     TemperatureConverter (double deg_kelvin ); //overloaded constructor
@@ -28,13 +34,13 @@ class TemperatureConverter {
     
     void PrintTemperatures();
     
-    private:
+    private: //private / not directly manipulatble
     double kelvin_;
 
     
-};
+};// have to end the class like this
     
-
+//Boom functions!!!
 TemperatureConverter::TemperatureConverter () {
     kelvin_ = 0;
 }
@@ -90,7 +96,7 @@ void   TemperatureConverter :: PrintTemperatures() {
     cout<<" Your temp in Celsius is "<<GetTempFromCelsius()<<endl;
 }
 
-int main ()
+int main ()// your main, so graciously bestowed!
 {
     TemperatureConverter temp1; //testing default constructor
     TemperatureConverter temp2(274); //testing overloaded constructor
