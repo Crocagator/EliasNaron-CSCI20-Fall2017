@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void lowercase (string& str) {
+void lowercase (string& str) {   // makes things lowercase
     for (int i = 0; i <str.length (); i++){
         str.at(i) = tolower (str.at(i));
     }
@@ -94,3 +94,59 @@ int main () { //main
     
     
 }
+/*                  EXAMPLES
+
+
+
+ Please Enter Your First Name (MAX OF 10 CHARACTERS):
+Your
+ Please Enter Your Last Name (MAX OF 20 CHARACTERS):
+name
+
+
+The name you entered is :
+Your  name
+
+Name Orientation 1:
+yourname
+
+Name Orientation 2:
+yname
+
+Name Orientation 3:
+yourn
+==================================================================================
+The name you entered is :
+April  Browne
+
+Name Orientation 1:
+aprilbrowne
+
+Name Orientation 2:
+abrowne
+
+Name Orientation 3:
+aprilb
+===============================================================================
+ Please Enter Your First Name (MAX OF 10 CHARACTERS):
+AnaElizabeth Hazeltine-Smith
+The name you entered is too many characters, please limit it to 10
+The name you entered is too many characters, please limit it to 10
+==============================================================================
+Please Enter Your First Name (MAX OF 10 CHARACTERS):
+James
+ Please Enter Your Last Name (MAX OF 20 CHARACTERS):
+James
+
+
+The name you entered is :
+James  James
+
+Name Orientation 1:
+jamesjames
+
+Name Orientation 2:
+jjames
+
+Name Orientation 3:
+jamesj
