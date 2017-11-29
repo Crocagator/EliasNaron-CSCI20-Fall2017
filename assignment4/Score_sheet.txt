@@ -1,4 +1,0 @@
- 
-Incorrect answers: 14
-Resulting in a grade of 10.5 out of 12 or a 87.5%
-

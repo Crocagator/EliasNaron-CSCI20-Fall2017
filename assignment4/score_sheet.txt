@@ -1,32 +1,24 @@
 Christian Smith
+Incorrect Marks: 9
+Scoring 10.75 of 18 -- 59.7222%
+
+Paxton Jones
+Incorrect Marks: 10
+Scoring 13.5 of 18 -- 75%
+
+Abby Sciuto
 Incorrect Marks: 8
-Scoring 10 of 17 -- 58.8235%
-
-equation Paxton
-Incorrect Marks: 13
-Scoring 13.75 of 17 -- 80.8824%
-
-t ?
-Incorrect Marks: 19
-Scoring 14.25 of 17 -- 83.8235%
-
-d a
-Incorrect Marks: 12
-Scoring 11 of 17 -- 64.7059%
+Scoring 13 of 18 -- 72.2222%
 
 Audrey Smithson
 Incorrect Marks: 11
-Scoring 10.25 of 17 -- 60.2941%
+Scoring 10.25 of 18 -- 56.9444%
 
-? Katie
-Incorrect Marks: 13
-Scoring 11.75 of 17 -- 69.1176%
+Katie Holmes
+Incorrect Marks: 10
+Scoring 12.5 of 18 -- 69.4444%
 
-t t
-Incorrect Marks: 18
-Scoring 14.5 of 17 -- 85.2941%
-
-d ?
-Incorrect Marks: 16
-Scoring 14 of 17 -- 82.3529%
+Carrie Grant
+Incorrect Marks: 8
+Scoring 16 of 18 -- 88.8889%
 

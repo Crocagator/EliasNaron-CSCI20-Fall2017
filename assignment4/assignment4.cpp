@@ -1,15 +1,9 @@
 /* 
-
 Created by : Elias Naron 
-
 Created on : 11/27/2017
-
 Purpose of program :
-
 This programs intention is to read a text file with students answers, then check them to another text file that is the answer key.
 It is a way to quickly score the grades of multiple students with multiple answers.
-
-
 */
 
 
@@ -226,23 +220,38 @@ int main(){
 }
 
 /*
-How many questions on this test are single character answers? (ex: A, B, C  = 3):   17
+How many questions on this test are single character answers? (ex: A, B, C  = 3):   18
 Opening input file named:   answerkey.txt   
  closed: answerkey.txt
 Opening input file named:   studentanswers.txt   
 Christian Smith
+Incorrect Marks: 9
+Scoring :10.75 of 18 -- 59.7222%
+
+Paxton Jones
+Incorrect Marks: 10
+Scoring :13.5 of 18 -- 75%
+
+Abby Sciuto
 Incorrect Marks: 8
-Scoring :10 of 17 -- 58.8235%
+Scoring :13 of 18 -- 72.2222%
 
-equation Paxton
-Incorrect Marks: 13
-Scoring :13.75 of 17 -- 80.8824%
+Audrey Smithson
+Incorrect Marks: 11
+Scoring :10.25 of 18 -- 56.9444%
 
-t ?
-Incorrect Marks: 19
-Scoring :14.25 of 17 -- 83.8235%
+Katie Holmes
+Incorrect Marks: 10
+Scoring :12.5 of 18 -- 69.4444%
 
+Carrie Grant
+Incorrect Marks: 8
+Scoring :16 of 18 -- 88.8889%
+
+Closed : studentanswers
+
+ Check folder root for score sheet :)
+
+Process exited with code: 0
 
 */
-
-
