@@ -1,42 +1,45 @@
- 
- //Elias Naron
+//Elias Naron
  
  //12/09/17
  
  //arena combat!
  
- //===========================================================================
+ //=============================MAIN=========================================
  #include<iostream>
  #include<string>
  #include<ios>
  #include <cstdlib>
  #include <ctime>
+ #include <fstream>
  using namespace std; 
 
 
- //=========================================================================== 
+ //================================WARRIOR===================================== 
  class Warrior{
      public:
+    
+       Warrior();
+     
+       int health[3];
+       int level[3];
+       
        int GetHealth();
        int GetSpeed();
        int GetDamage();
        int GetLevel();
-       int health[3];
-       int level[3];
-       Warrior();
      
      private:  
-     int speed[3];  
-     int damage[3];
+      int speed[3];  
+      int damage[3];
  };
    
-   
-    Warrior::Warrior(){ //Constructor
+   //Constructor!
+    Warrior::Warrior(){ 
      srand(time(0)); 
      health[0] = 120;
-     speed[0] = 50;
-     damage[0] = ((rand() % 35) + 15);
-     level[0] = 5;
+     speed[0] = 65;
+     damage[0] = ((rand() % 15) + 40);
+     level[0] = 1;
      return;
     }
      
@@ -64,7 +67,7 @@
     // end Warrior
    
     //start Mage
- //=========================================================================== 
+ //==========================MAGE============================================ 
  class Mage{
   public:
   
@@ -84,18 +87,21 @@
      Mage::Mage(){
      srand(time(0));
      health[1] = 100;
-     speed[1]  = 60;
-     damage[1] = ((rand() % 45) + 1);
-     level[1] = 5;
+     speed[1]  = 70;
+     damage[1] = ((rand() % 10) + 45);
+     level[1] = 1;
      return;
     }
      
-    int Mage::GetHealth(){ //Get HP
+     
+     //GETS HP
+    int Mage::GetHealth(){
      
      return health[1];
     }
     
-    int Mage::GetSpeed(){ // get speed (unchangeable)
+    // get speed (unchangeable)
+    int Mage::GetSpeed(){ 
      
      
      return speed[1];
@@ -135,18 +141,20 @@
      Brute::Brute(){ //Brute constructor
      srand(time(0));
      health[2] = 80;
-     speed[2]  = 70;
-     damage[2] = ((rand() % 60) + 1);
-     level[2] = 5;
+     speed[2]  = 90;
+     damage[2] = ((rand() % 10) + 55);
+     level[2] = 1;
      return;
     }
      
-    int Brute::GetHealth(){ //Get HP
+      //Get HP
+    int Brute::GetHealth(){
      
      return health[2];
     }
     
-    int Brute::GetSpeed(){ // get speed (unchangeable)
+    // get speed (unchangeable)
+    int Brute::GetSpeed(){ 
      
      
      return speed[2];
@@ -163,44 +171,48 @@
    return level[2]; 
    }
  
- 
-  int getNewHealthB(){//rand damage functions
+ //rand damage functions
+  int getNewHealthWarrior(){
      Warrior randWarrior = Warrior();
      randWarrior.GetDamage();
      return randWarrior.GetDamage();
   }
-   int getNewHealthV(){
+   int getNewHealthMage(){
      Mage randMage = Mage();
      randMage.GetDamage();
      return randMage.GetDamage();
    }
 
- int getNewHealthC(){
+ int getNewHealthBrute(){
      Brute randBrute = Brute();
      randBrute.GetDamage();
      return randBrute.GetDamage();
   }
  
   
-  //===========================================================================
+  //======================MAIN!=================================================
  
  int main(){
     
+    
+    ofstream outFS;
     srand(time(0));
-    int classchoice;
-    int attackMove;
-    int OpponentAttack;
-    int newHP[10];
-    int newHPO[10];
-    int levelUP[1000000];
-    int i, k, z , x, q;
+    int classchoice = 0;
+    int attackMove = 0;
+    int OpponentAttack = 0;
+    int modifiedHealth[10];
+    int modifiedHP[10];
+    int levelUP[40];
+    int i = 0, k = 0, z  = 0, x = 0, q = 0;
     int exitGame;
      Warrior WarriorChoice = Warrior();
      Mage MageChoice = Mage();
      Brute BruteChoice = Brute();
+     
+     outFS.open("BattleResults.txt");
   
     
- //===========================================================================    
+ //========================I/O===========================================    
     cout<<"Welcome Contestant. What Class do you fight with?"<<endl<<endl;
     cout<<"Warrior is a natural fighter,  Defensive defensively stanced. He is slow, but makes up for that with defense."<<endl<<endl;
     cout<<"Brute is a high speed, high damage , reckless agressor.  He is very quick, and typically looks to end his opponent quickly with \"brute\" force."<<endl<<endl;
@@ -213,27 +225,32 @@
     cin>>classchoice;
     
 
-    
-    switch(classchoice){// Mother Switch
-    
-    case 1 ://User Warrior Choice
+    // Mother Switch
+    switch(classchoice){
+    //User Warrior Choice
+    case 1 :
     cout<<"You have chosen Warrior!!"<<endl;
+    outFS << "You have chosen Warrior!!" << endl;
   
     
-    cout<<"Your opponent is a masked fire Mage covered in tattered garbs from uncontrolled flames! Get ready for Battle!!!"<<endl;   
+    cout<<"Your opponent is a masked fire Mage covered in tattered garbs from uncontrolled flames! Get ready for Battle!!!"<<endl;
+    outFS<<"Your opponent is a masked fire Mage covered in tattered garbs from uncontrolled flames! Get ready for Battle!!!"<<endl;
     cout<<"The mage beckons you."<<endl;
+    outFS<<"The mage beckons you."<<endl;
     
-     newHP[i] = WarriorChoice.GetHealth(); // sets array to health
-     newHPO[k] = MageChoice.GetHealth();
-    
-    while(newHP[i] > 0 && newHPO[i] > 0){ // HP > 0 loop
+    // sets array to health
+     modifiedHealth[i] = WarriorChoice.GetHealth(); 
+     modifiedHP[k] = MageChoice.GetHealth();
+     // HP > 0 loop
+    while(modifiedHealth[i] > 0 && modifiedHP[i] > 0){
     
     cout<<"Warrior , what is your move?"<<endl<<endl;
     cout<<"1.High Strike      2.Charge" <<endl;
     cout<<"3.Shield Check    4.Javelin"<<endl;
+    
     cin>>attackMove;
-              
-      if (MageChoice.GetSpeed() > WarriorChoice.GetSpeed()) // higher speed attack 
+      // higher speed attack          
+      if (MageChoice.GetSpeed() > WarriorChoice.GetSpeed())
       {
        
        cout<<"Mage gets to attack first!"<<endl;
@@ -247,6 +264,8 @@
         
         cout<<"Mage takes an aggressive stance in preparation for his Combustion attack!"<<endl;
         cout<<"Mage uses Combustion! A puff of smoke quickly followed by blazing fire comes from his fingertips."<<endl;
+        outFS<<"Mage takes an aggressive stance in preparation for his Combustion attack!"<<endl;
+        outFS<<"Mage uses Combustion! A puff of smoke quickly followed by blazing fire comes from his fingertips."<<endl;
         
         break;
         
@@ -254,6 +273,8 @@
         
         cout<<"Mage takes an aggressive stance in preparation for his Fire Javelin attack!"<<endl;
         cout<<"Mage hurls a torrent of smouldering javelins towards his foe"<<endl;
+        outFS<<"Mage takes an aggressive stance in preparation for his Fire Javelin attack!"<<endl;
+        outFS<<"Mage hurls a torrent of smouldering javelins towards his foe"<<endl;
         
         break;
         
@@ -261,6 +282,8 @@
         
         cout<<"Mage pulls crackling lightning from the earth in preparation for his Nova Strike attack!"<<endl;
         cout<<"Mage's lighting shoots outward in a circle around himself"<<endl;
+        outFS<<"Mage pulls crackling lightning from the earth in preparation for his Nova Strike attack!"<<endl;
+        outFS<<"Mage's lighting shoots outward in a circle around himself"<<endl;
         
         
         break;
@@ -268,43 +291,54 @@
         case 4:
         
         cout<<"Mage heals himself for 10 HP!"<<endl;
-        
+        outFS<<"Mage heals himself for 10 HP!"<<endl;
         break;
         
         default :
         
         cout<<"Mage misses his attack!"<<endl;
-        
+        outFS<<"Mage misses his attack!"<<endl;
         break;
         
         
        }
       }
-     newHP[i] = (newHP[i] - getNewHealthV()); //Mage Health
+      //Mage Health
+     modifiedHealth[i] = (modifiedHealth[i] - getNewHealthMage());
         
-         if(newHP[i] <= 0){
+         if(modifiedHealth[i] <= 0){
            
            cout<<"You Died!"<<endl;  
            cout<<"The mage smoked you!"<<endl;
-          
+           outFS<<"You Died!"<<endl;  
+           outFS<<"The mage smoked you!"<<endl;
+           
+           outFS<<endl;
+           outFS<<endl;
+           outFS<<endl;
           
          }
        
        else{
      
-        cout<<"Warriors HP is at " << newHP[i]<<endl;
-        switch(attackMove){//Choose attacks switch
-         
+        cout<<"Warriors HP is at " << modifiedHealth[i]<<endl;
+        outFS<<"Warriors HP is at " << modifiedHealth[i]<<endl;
+        switch(attackMove){
+         //Choose attacks switch
          case 1 :
          
          cout<<"Warrior drops his head in preparation for his High Strike attack!"<<endl;
          cout<<"Warrior throws his blade high and catches the mage"<<endl;
+         outFS<<"Warrior drops his head in preparation for his High Strike attack!"<<endl;
+         outFS<<"Warrior throws his blade high and catches the mage"<<endl;
          break;
          
          case 2:
          
          cout<<"Warrior steadys his feet in preparation for his Charge attack!"<<endl;
          cout<<"Warrior smashes hard into the mage."<<endl;
+         outFS<<"Warrior steadys his feet in preparation for his Charge attack!"<<endl;
+         outFS<<"Warrior smashes hard into the mage."<<endl;
          
          break;
          
@@ -312,6 +346,8 @@
          
          cout<<"Warrior lines up his shield to his opponents head for your Shield Check attack!"<<endl;
          cout<<"warrior extends abruptly and checks the shield against the mages head!"<<endl;
+         outFS<<"Warrior lines up his shield to his opponents head for your Shield Check attack!"<<endl;
+         outFS<<"warrior extends abruptly and checks the shield against the mages head!"<<endl;
         
          break;
          
@@ -319,10 +355,13 @@
          
          cout<<"Warrior stretches back preparation for his Javelin attack!"<<endl;
          cout<<"warrior lunges and catches the mage in the leg."<<endl;
+         outFS<<"Warrior stretches back preparation for his Javelin attack!"<<endl;
+         outFS<<"warrior lunges and catches the mage in the leg."<<endl;
          break;
          
          default:
            cout<<"You miss your attack"<<endl;    
+           outFS<<"You miss your attack"<<endl;  
          
          break;
          
@@ -330,22 +369,30 @@
         
        
         
-        
-        newHPO[k] = (newHPO[k] - getNewHealthB());//If Mage dies
-        if(newHPO[k] <= 0 ){
+        //If Mage dies
+        modifiedHP[k] = (modifiedHP[k] - getNewHealthWarrior());
+        if(modifiedHP[k] <= 0 ){
            
            cout<<"Mage succumbs!"<<endl;
            cout<<"You smoked him!"<<endl;
+           outFS<<"Mage succumbs!"<<endl;
+           outFS<<"You smoked him!"<<endl;
+           
+           outFS<<endl;
+           outFS<<endl;
+           outFS<<endl;
+           
            levelUP[z] = WarriorChoice.GetLevel();
            levelUP[z] = levelUP[z] + 1;
            cout<<"Warrior has grown to level " << levelUP[z] <<"."<<endl;;
+           outFS<<"Warrior has grown to level " << levelUP[z] <<"."<<endl;;
            cout<<"Would you like to battle again?"<<endl;
            cin>>exitGame;
           
          }
         else{
          
-         cout<<"Mages HP is at "<<newHPO[k]<<endl;
+         cout<<"Mages HP is at "<<modifiedHP[k]<<endl;
      
         }
         }
@@ -357,23 +404,30 @@
     cout<<"You have chosen Brute!"<<endl;
     cout<<"Your opponent has chosen Warrior! Get ready for Battle!!!"<<endl;   
     cout<<"Warrior bows his head!"<<endl;
+    
+    outFS<<"You have chosen Brute!"<<endl;
+    outFS<<"Your opponent has chosen Warrior! Get ready for Battle!!!"<<endl;   
+    outFS<<"Warrior bows his head!"<<endl;
  
     
-    newHP[i] = BruteChoice.GetHealth(); 
-    newHPO[k] = WarriorChoice.GetHealth();
+    modifiedHealth[i] = BruteChoice.GetHealth(); 
+    modifiedHP[k] = WarriorChoice.GetHealth();
      
-     
-     while(newHP[i] > 0 && newHPO[i] > 0){ // HP > 0 loop
+     // HP > 0 loop
+     while(modifiedHealth[i] > 0 && modifiedHP[i] > 0){ 
     
     cout<<"Brute what is your command."<<endl<<endl;
     cout<<"1.Flurry       2.Rush" <<endl;
     cout<<"3.Defening Shout 4.Strength"<<endl;
     cin>>attackMove;
-              
-      if (BruteChoice.GetSpeed() > WarriorChoice.GetSpeed()) // higher speed attack 
+      
+      
+       // higher speed attack        
+      if (BruteChoice.GetSpeed() > WarriorChoice.GetSpeed()) 
       {
        
        cout<<"Brute gets to attack first!"<<endl;
+       outFS<<"Brute gets to attack first!"<<endl;
        
        
       switch(attackMove){
@@ -382,6 +436,8 @@
         
         cout<<"Brute leaps into towards the warrior preparing his attack"<<endl;
         cout<<"Brute swings wildly with both hands at his opponent."<<endl;
+        outFS<<"Brute leaps into towards the warrior preparing his attack"<<endl;
+        outFS<<"Brute swings wildly with both hands at his opponent."<<endl;
         
         break;
         
@@ -389,6 +445,8 @@
         
         cout<<"Brute takes an aggressive stance in preparation for his Rush attack!"<<endl;
         cout<<"Brute overwhelms his oppenent in close quarters stabbing recklessly"<<endl;
+        outFS<<"Brute takes an aggressive stance in preparation for his Rush attack!"<<endl;
+        outFS<<"Brute overwhelms his oppenent in close quarters stabbing recklessly"<<endl;
         
         break;
         
@@ -396,6 +454,8 @@
         
         cout<<"Brute begins to inhale deeply in preparation for his shout!"<<endl;
         cout<<"Brute sends a ring of defening blood curdling sound at his opponenet!"<<endl;
+        outFS<<"Brute begins to inhale deeply in preparation for his shout!"<<endl;
+        outFS<<"Brute sends a ring of defening blood curdling sound at his opponenet!"<<endl;
         
         
         break;
@@ -403,26 +463,37 @@
         case 4:
         
         cout<<"Brute grows enraged and uses his strength attack!"<<endl;
+        outFS<<"Brute grows enraged and uses his strength attack!"<<endl;
         
         break;
         
         default :
         
         cout<<"Brute misses his attack!"<<endl;
+        outFS<<"Brute misses his attack!"<<endl;
         
         break;
         
         
        }
-          newHPO[k] = (newHPO[k] - getNewHealthC());
+          modifiedHP[k] = (modifiedHP[k] - getNewHealthBrute());
         
-         if(newHPO[k] <= 0){
+         if(modifiedHP[k] <= 0){
            
            cout<<"The warrior falls."<<endl;  
            cout<<"You smoked him!"<<endl;
+           
+           outFS<<"The warrior falls."<<endl;  
+           outFS<<"You smoked him!"<<endl;
+           
+           outFS<<endl;
+           outFS<<endl;
+           outFS<<endl;
+           
            levelUP[z] = BruteChoice.GetLevel();
            levelUP[z] = levelUP[q] + 1;
            cout<<"Brute has grown to level " << levelUP[z] <<"."<<endl;;
+           outFS<<"Brute has grown to level " << levelUP[z] <<"."<<endl;;
            cout<<"Would you like to battle again?"<<endl;
            cin>>exitGame;
           
@@ -430,16 +501,19 @@
        
        
      else{
-      cout<<"Warriors HP is at "<<newHPO[k]<<endl;
+      cout<<"Warriors HP is at "<<modifiedHP[k]<<endl;
         cout<<"1.High Strike      2.Charge" <<endl;
         cout<<"3.Shield Check    4.Javelin"<<endl;
            cin>>OpponentAttack;
-           switch(attackMove){//Choose attacks switch
-         
+           switch(attackMove){
+         //Choose attacks switch
          case 1 :
          
          cout<<"Warrior drops his head in preparation for his High Strike attack!"<<endl;
          cout<<"Warrior throws his blade high and catches his foe"<<endl;
+         
+         outFS<<"Warrior drops his head in preparation for his High Strike attack!"<<endl;
+         outFS<<"Warrior throws his blade high and catches his foe"<<endl;
          break;
          
          case 2:
@@ -447,12 +521,18 @@
          cout<<"Warrior steadys his feet in preparation for his Charge attack!"<<endl;
          cout<<"Warrior smashes hard into his foe."<<endl;
          
+         outFS<<"Warrior steadys his feet in preparation for his Charge attack!"<<endl;
+         outFS<<"Warrior smashes hard into his foe."<<endl;
+         
          break;
          
          case 3:
          
          cout<<"Warrior lines up his shield to his opponents head for your Shield Check attack!"<<endl;
          cout<<"warrior extends abruptly and checks the shield against the head of his foe"<<endl;
+         
+         outFS<<"Warrior lines up his shield to his opponents head for your Shield Check attack!"<<endl;
+         outFS<<"warrior extends abruptly and checks the shield against the head of his foe"<<endl;
         
          break;
          
@@ -460,10 +540,14 @@
          
          cout<<"Warrior stretches back preparation for his Javelin attack!"<<endl;
          cout<<"warrior lunges and catches his enemy in the leg."<<endl;
+         
+         outFS<<"Warrior stretches back preparation for his Javelin attack!"<<endl;
+         outFS<<"warrior lunges and catches his enemy in the leg."<<endl;
          break;
          
          default:
-           cout<<"You miss your attack"<<endl;    
+           cout<<"You miss your attack"<<endl;  
+           outFS<<"You miss your attack"<<endl;   
          
          break;
            }
@@ -472,10 +556,11 @@
        
       
          
-        newHP[i] = (newHP[i] - getNewHealthB());
-        if(newHP[i] <= 0 ){
+        modifiedHealth[i] = (modifiedHealth[i] - getNewHealthWarrior());
+        if(modifiedHealth[i] <= 0 ){
            
            cout<<"Brute has died!"<<endl;
+           outFS<<"Brute has died!"<<endl;
           
            
           
@@ -485,7 +570,8 @@
          
          
          
-         cout<<"Brutes HP is at "<<newHP[i]<<endl;
+         cout<<"Brutes HP is at "<<modifiedHealth[i]<<endl;
+         outFS<<"Brutes HP is at "<<modifiedHealth[i]<<endl;
         }
         }
         }
@@ -500,19 +586,24 @@
     cout<<"Your opponent has chosen Brute! Get ready for Battle!!!"<<endl;   
     cout<<"The brute screams incomprehensible threats at you!"<<endl;
     
+    outFS<<"You have chosen Mage!"<<endl;
+    outFS<<"Your opponent has chosen Brute! Get ready for Battle!!!"<<endl;   
+    outFS<<"The brute screams incomprehensible threats at you!"<<endl;
     
-    newHP[i] = MageChoice.GetHealth(); // sets array to health
-    newHPO[k] = BruteChoice.GetHealth();
+    // sets array to health
+    modifiedHealth[i] = MageChoice.GetHealth(); 
+    modifiedHP[k] = BruteChoice.GetHealth();
      
-     
-     while(newHP[i] > 0 && newHPO[i] > 0){ // HP > 0 loop
+      // HP > 0 loop
+     while(modifiedHealth[i] > 0 && modifiedHP[i] > 0){
     
   
-              
-      if (BruteChoice.GetSpeed() > MageChoice.GetSpeed()) // higher speed attack 
+       // higher speed attack         
+      if (BruteChoice.GetSpeed() > MageChoice.GetSpeed())
       {
        
        cout<<"Brute has higher speed and gets to attack first!"<<endl;
+       outFS<<"Brute has higher speed and gets to attack first!"<<endl;
       
     cout<<"1.Flurry         2.Rush" <<endl;
     cout<<"3.Defening Shout 4.Strength"<<endl;
@@ -525,12 +616,18 @@
         cout<<"Brute leaps into towards the warrior preparing his attack"<<endl;
         cout<<"Brute swings wildly with both hands at his opponent."<<endl;
         
+        outFS<<"Brute leaps into towards the warrior preparing his attack"<<endl;
+        outFS<<"Brute swings wildly with both hands at his opponent."<<endl;
+        
         break;
         
         case 2: 
         
         cout<<"Brute takes an aggressive stance in preparation for his Rush attack!"<<endl;
         cout<<"Brute overwhelms his oppenent in close quarters stabbing recklessly"<<endl;
+        
+        outFS<<"Brute takes an aggressive stance in preparation for his Rush attack!"<<endl;
+        outFS<<"Brute overwhelms his oppenent in close quarters stabbing recklessly"<<endl;
         
         break;
         
@@ -539,35 +636,43 @@
         cout<<"Brute begins to inhale deeply in preparation for his shout!"<<endl;
         cout<<"Brute sends a ring of defening blood curdling sound at his opponenet!"<<endl;
         
+        outFS<<"Brute begins to inhale deeply in preparation for his shout!"<<endl;
+        outFS<<"Brute sends a ring of defening blood curdling sound at his opponenet!"<<endl;
+        
         
         break;
         
         case 4:
         
         cout<<"Brute grows enraged and uses his strength attack!"<<endl;
+        outFS<<"Brute grows enraged and uses his strength attack!"<<endl;
         
         break;
         
         default :
         
         cout<<"Brute misses his attack!"<<endl;
+        outFS<<"Brute misses his attack!"<<endl;
         
         break;
         
         
        }
-       
-        newHP[i] = (newHP[i] - getNewHealthB()); //Mage Health
+       //Mage Health 
+        modifiedHealth[i] = (modifiedHealth[i] - getNewHealthWarrior());
         
-         if(newHP[i] <= 0){
+         if(modifiedHealth[i] <= 0){
            
         cout<<"You died!"<<endl;  
         cout<<"The Brute smoked you!"<<endl;
+        
+        outFS<<"You died!"<<endl;  
+        outFS<<"The Brute smoked you!"<<endl;
           
           
          }
         else{
-        cout<<"Mages HP is at "<<newHP[i]<<endl;    
+        cout<<"Mages HP is at "<<modifiedHealth[i]<<endl;    
         cout<<"What is your move, Mage?."<<endl;
         cout<<"1.Combustion   2.Fire Javelin"<<endl;
         cout<<"3.Nova Strike   4.Healing touch"<<endl;
@@ -581,12 +686,19 @@
         cout<<"Mage takes an aggressive stance in preparation for his Combustion attack!"<<endl;
         cout<<"Mage uses Combustion! A puff of smoke quickly followed by blazing fire comes from his fingertips."<<endl;
         
+        outFS<<"Mage takes an aggressive stance in preparation for his Combustion attack!"<<endl;
+        outFS<<"Mage uses Combustion! A puff of smoke quickly followed by blazing fire comes from his fingertips."<<endl;
+        
+        
         break;
         
         case 2: 
         
         cout<<"Mage takes an aggressive stance in preparation for his Fire Javelin attack!"<<endl;
         cout<<"Mage hurls a torrent of smouldering javelins towards his foe"<<endl;
+        
+        outFS<<"Mage takes an aggressive stance in preparation for his Fire Javelin attack!"<<endl;
+        outFS<<"Mage hurls a torrent of smouldering javelins towards his foe"<<endl;
         
         break;
         
@@ -595,34 +707,42 @@
         cout<<"Mage pulls crackling lightning from the earth in preparation for his Nova Strike attack!"<<endl;
         cout<<"Mage's lighting shoots outward in a circle around himself"<<endl;
         
+        outFS<<"Mage pulls crackling lightning from the earth in preparation for his Nova Strike attack!"<<endl;
+        outFS<<"Mage's lighting shoots outward in a circle around himself"<<endl;
+        
         
         break;
         
         case 4:
         
         cout<<"Mage heals himself for 10 HP!"<<endl;
+        outFS<<"Mage heals himself for 10 HP!"<<endl;
         
         break;
         
         default :
         
         cout<<"Mage misses his attack!"<<endl;
+        outFS<<"Mage misses his attack!"<<endl;
         
         break;
         
         
        }
         
+         // Brute Health
+         modifiedHP[k] = (modifiedHP[k] - getNewHealthMage());
         
-         newHPO[k] = (newHPO[k] - getNewHealthV()); // Brute Health
-        
-         if(newHPO[k] <= 0 ){
+         if(modifiedHP[k] <= 0 ){
            
            cout<<"Brute Died!"<<endl;
+           outFS<<"Brute Died!"<<endl;
            
            levelUP[z] = MageChoice.GetLevel();
            levelUP[z] = levelUP[x] + 1;
            cout<<"Mage has grown to level " << levelUP[z] <<"."<<endl;;
+           
+           outFS<<"Mage has grown to level " << levelUP[z] <<"."<<endl;;
            cout<<"Would you like to battle again?"<<endl;
            cin>>exitGame;
           
@@ -630,7 +750,9 @@
         }
         else{
          
-         cout<<"Brutes HP is at "<<newHPO[k]<<endl;
+         cout<<"Brutes HP is at "<<modifiedHP[k]<<endl;
+         
+         outFS<<"Brutes HP is at "<<modifiedHP[k]<<endl;
        
         }
         }
@@ -643,15 +765,8 @@
     default:
       cout<<"No Class Chosen"<<endl;
     break;
+    outFS.close();
         }
         }
         }
-
-
-
-
-
-
-
-
 
